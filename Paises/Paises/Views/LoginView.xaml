@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Paises.Views.LoginView"
+             BindingContext="{Binding LvM, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10,20,10,5">
+                <Label  Text="PAISES"
+                        FontSize="Large"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center" 
+                        FontAttributes="Bold"/>
+                <Image  Source="ic_launcher.png"
+                        HeightRequest="160"
+                        WidthRequest="160" />
+                <Grid Margin="5,20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width ="*"/>
+                        <ColumnDefinition Width ="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label  Text="Email"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            VerticalOptions="Center"/>
+                    <Entry  x:Name="Email"
+                            Keyboard="Email"
+                            Text="{Binding Email}"
+                            Placeholder="Enter your email..."
+                            Grid.Row="0"
+                            Grid.Column="1"/>
+                    <Label  Text="Password"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            VerticalOptions="Center"/>
+                    <Entry  x:Name="Password"
+                            IsPassword="True"
+                            Text="{Binding Password}"
+                            Placeholder="Enter your password..."
+                            Grid.Row="1"
+                            Grid.Column="1"/>
+                </Grid>
+                <StackLayout Orientation="Horizontal">
+                    <Label  Text="Remember in this device"
+                            FontSize="Medium"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    <Switch HorizontalOptions="End"/>
+                    <ActivityIndicator>
+                    </ActivityIndicator>
+                </StackLayout>
+                <StackLayout Margin ="40,0">
+                    <Button x:Name="btnAcceder"
+                            Text="Login"
+                            VerticalOptions="Center" 
+                            HorizontalOptions="CenterAndExpand"
+                            BackgroundColor="Navy"
+                            Style="{StaticResource GeneralButton}"
+                            Command="{Binding AccederCommand}"/>
+                    <Button x:Name="btnRegistrar"
+                            Text="Register"
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Center"
+                            BackgroundColor="Purple"
+                            Style="{StaticResource GeneralButton}"
+                            Command="{Binding RegisterCommand}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="Center">
+                    <Image  Source="ic_facebook.png"
+                            HeightRequest="80"
+                            WidthRequest="80" />
+                    <Image  Source="ic_twitter.png"
+                            HeightRequest="80"
+                            WidthRequest="80" />
+                    <Image  Source="ic_instagram.png"
+                            HeightRequest="80"
+                            WidthRequest="80" />
+                </StackLayout>    
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
