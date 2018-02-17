@@ -2,15 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Paises.Views.LoginView"
-             BindingContext="{Binding LvM, Source={StaticResource Locator}}">
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="PAISES">
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView
+            BindingContext="{Binding LvM}">
             <StackLayout Padding="10,20,10,5">
-                <Label  Text="PAISES"
-                        FontSize="Large"
-                        VerticalOptions="Center" 
-                        HorizontalOptions="Center" 
-                        FontAttributes="Bold"/>
                 <Image  Source="ic_launcher.png"
                         HeightRequest="160"
                         WidthRequest="160" />
@@ -29,7 +26,7 @@
                             VerticalOptions="Center"/>
                     <Entry  x:Name="Email"
                             Keyboard="Email"
-                            Text="{Binding Email}"
+                            Text="{Binding Email, Mode=TwoWay}"
                             Placeholder="Enter your email..."
                             Grid.Row="0"
                             Grid.Column="1"/>
@@ -39,20 +36,31 @@
                             VerticalOptions="Center"/>
                     <Entry  x:Name="Password"
                             IsPassword="True"
-                            Text="{Binding Password}"
+                            Text="{Binding Password, Mode=TwoWay}"
                             Placeholder="Enter your password..."
                             Grid.Row="1"
                             Grid.Column="1"/>
                 </Grid>
                 <StackLayout Orientation="Horizontal">
-                    <Label  Text="Remember in this device"
+                    <Label  Text="Remember on this device"
                             FontSize="Medium"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
-                    <Switch HorizontalOptions="End"/>
-                    <ActivityIndicator>
+                    <Switch HorizontalOptions="End"
+                            IsToggled="{Binding IsRemembered, Mode=TwoWay}"/>
+                    <ActivityIndicator
+                        IsRunning="{Binding IsRunning, Mode=TwoWay}">
                     </ActivityIndicator>
                 </StackLayout>
+                <Label  Text="Forgot your password?"
+                            TextColor="Blue"
+                            FontSize="Medium"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                            <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding RecoverPasswordCommand}"/>
+                            </Label.GestureRecognizers> />
+                </Label>
                 <StackLayout Margin ="40,0">
                     <Button x:Name="btnAcceder"
                             Text="Login"
