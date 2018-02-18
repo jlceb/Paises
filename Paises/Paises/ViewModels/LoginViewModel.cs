@@ -64,12 +64,27 @@ namespace Paises.ViewModels
             }
         }
 
+        bool isenabled;
+        public bool IsEnabled
+        {
+            get
+            {
+                return isenabled;
+            }
+            set
+            {
+                isenabled = value;
+                this.Notify("IsEnabled");
+            }
+        }
+
         MessageService messageService;
 
         public LoginViewModel()
         {
             messageService = new MessageService();
             this.IsRemembered = true;
+            this.IsEnabled = true;
         }
 
         public ICommand AccederCommand
@@ -88,16 +103,29 @@ namespace Paises.ViewModels
         {
             if (string.IsNullOrEmpty(Email))
             {
-                await messageService.SendMessage("Error", "You must enter an email");
+                await messageService.SendMessage("Error", "You must enter an email.");
                 return;
             }
             if (string.IsNullOrEmpty(Password))
             {
-                await messageService.SendMessage("Error", "You must enter an password");
+                await messageService.SendMessage("Error", "You must enter an password.");
+                return;
+            }
+            this.IsRunning = true;
+            this.IsEnabled = false;
+            if (this.Email != "luis" || this.Password != "1234")
+            {
+                await messageService.SendMessage("Error", "Email or password incorrect.");
+                this.IsRunning = false;
+                this.IsEnabled = true;
                 return;
             }
 
-            IsRunning = true;
+            this.IsRunning = false;
+            this.IsEnabled = true;
+            this.Email = string.Empty;
+            this.Password = string.Empty;
+
         }
     }
 }

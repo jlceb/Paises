@@ -5,11 +5,11 @@ namespace Paises.Infrastructure
 
     public class InstanceLocator
     {
-        public LoginViewModel LvM { get; set; }
+        public MainViewModel Main { get; set; }
 
         public InstanceLocator()
         {
-            LvM = new LoginViewModel();
+            Main = new MainViewModel();
         }
 
     }

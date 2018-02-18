@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Paises.Views.LoginView"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="PAISES">
+             Title="LOGIN">
     <ContentPage.Content>
         <ScrollView
-            BindingContext="{Binding LvM}">
+            BindingContext="{Binding Login}">
             <StackLayout Padding="10,20,10,5">
                 <Image  Source="ic_launcher.png"
                         HeightRequest="160"
@@ -68,6 +68,7 @@
                             HorizontalOptions="CenterAndExpand"
                             BackgroundColor="Navy"
                             Style="{StaticResource GeneralButton}"
+                            IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                             Command="{Binding AccederCommand}"/>
                     <Button x:Name="btnRegistrar"
                             Text="Register"
@@ -75,6 +76,7 @@
                             HorizontalOptions="Center"
                             BackgroundColor="Purple"
                             Style="{StaticResource GeneralButton}"
+                            IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                             Command="{Binding RegisterCommand}"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal"
