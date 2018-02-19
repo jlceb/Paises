@@ -5,8 +5,9 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="PAISES">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+        <StackLayout
+            BindingContext="{Binding Paises}">
+            <Label Text="Welcome to LISTADO DE PAISES!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>

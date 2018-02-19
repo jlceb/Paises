@@ -11,7 +11,7 @@
                 <Image  Source="ic_launcher.png"
                         HeightRequest="160"
                         WidthRequest="160" />
-                <Grid Margin="5,20">
+                <Grid Margin="10,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
@@ -41,7 +41,8 @@
                             Grid.Row="1"
                             Grid.Column="1"/>
                 </Grid>
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal"
+                             Margin="10,0">
                     <Label  Text="Remember on this device"
                             FontSize="Medium"
                             HorizontalOptions="Start"
@@ -59,13 +60,15 @@
                             VerticalOptions="Center">
                             <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding RecoverPasswordCommand}"/>
-                            </Label.GestureRecognizers> />
+                            </Label.GestureRecognizers> 
                 </Label>
-                <StackLayout Margin ="40,0">
+                <StackLayout 
+                            Orientation ="Horizontal" 
+                            Margin ="40,0">
                     <Button x:Name="btnAcceder"
                             Text="Login"
                             VerticalOptions="Center" 
-                            HorizontalOptions="CenterAndExpand"
+                            HorizontalOptions="FillAndExpand"
                             BackgroundColor="Navy"
                             Style="{StaticResource GeneralButton}"
                             IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
@@ -73,7 +76,7 @@
                     <Button x:Name="btnRegistrar"
                             Text="Register"
                             VerticalOptions="Center" 
-                            HorizontalOptions="Center"
+                            HorizontalOptions="FillAndExpand"
                             BackgroundColor="Purple"
                             Style="{StaticResource GeneralButton}"
                             IsEnabled="{Binding IsEnabled, Mode=TwoWay}"

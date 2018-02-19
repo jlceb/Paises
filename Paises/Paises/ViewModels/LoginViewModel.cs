@@ -1,8 +1,10 @@
 ﻿using Paises.Services;
+using Paises.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace Paises.ViewModels
 {
@@ -78,14 +80,6 @@ namespace Paises.ViewModels
             }
         }
 
-        MessageService messageService;
-
-        public LoginViewModel()
-        {
-            messageService = new MessageService();
-            this.IsRemembered = true;
-            this.IsEnabled = true;
-        }
 
         public ICommand AccederCommand
         {
@@ -97,6 +91,18 @@ namespace Paises.ViewModels
         {
             get;
             set;
+        }
+
+        MessageService messageService;
+        NavigationService navigationService;
+
+        public LoginViewModel()
+        {
+            messageService = new MessageService();
+            navigationService = new NavigationService();
+            this.AccederCommand = new Command(this.Acceder);
+            this.IsRemembered = true;
+            this.IsEnabled = true;
         }
 
         async void Acceder()
@@ -125,6 +131,9 @@ namespace Paises.ViewModels
             this.IsEnabled = true;
             this.Email = string.Empty;
             this.Password = string.Empty;
+
+            MainViewModel.GetIntance().Paises = new PaisesViewModel();
+            navigationService.NavigateTo("PaisesView");
 
         }
     }
